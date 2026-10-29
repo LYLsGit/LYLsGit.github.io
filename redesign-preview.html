@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>LYLs · 私人索引</title>
+<meta name="description" content="LYLs 的个人导航页：工作、AI、学习、生活与我的一页入口。" />
+<meta name="theme-color" content="#0C0B0A" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20fill='%230C0B0A'/%3E%3Ctext%20x='32'%20y='45'%20font-family='Georgia,serif'%20font-size='40'%20fill='%23FF6B45'%20text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E" />
+<script>try{var t=localStorage.getItem('lyls.theme');if(t==='light'||t==='dark'){document.documentElement.dataset.theme=t;}}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* ========== 设计变量 ========== */
+:root{
+  --font-display:"Fraunces","Noto Serif SC","Songti SC",serif;
+  --font-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+  --font-body:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+:root[data-theme="dark"]{
+  --bg:#0C0B0A;
+  --bg-soft:#121110;
+  --text:#F1EBE0;
+  --muted:#948D7F;
+  --faint:#615B50;
+  --line:rgba(241,235,224,.14);
+  --line-strong:rgba(241,235,224,.26);
+  --accent:#FF6B45;
+  --accent-2:#6FBDB6;
+  --hover:rgba(255,107,69,.07);
+  --grain:.16;
+  --shadow:0 24px 60px rgba(0,0,0,.35);
+}
+:root[data-theme="light"]{
+  --bg:#F2EDE3;
+  --bg-soft:#EAE4D7;
+  --text:#17140E;
+  --muted:#6E6759;
+  --faint:#9A9285;
+  --line:rgba(23,20,14,.16);
+  --line-strong:rgba(23,20,14,.34);
+  --accent:#C04622;
+  --accent-2:#2F7B74;
+  --hover:rgba(192,70,34,.07);
+  --grain:.10;
+  --shadow:0 24px 60px rgba(60,48,32,.14);
+}
+/* ========== 基础 ========== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{-webkit-text-size-adjust:100%;}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:var(--font-body);
+  font-size:15px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow:hidden;
+}
+::selection{background:var(--accent);color:var(--bg);}
+a{color:inherit;text-decoration:none;}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px;}
+kbd{
+  font-family:var(--font-mono);font-size:9px;line-height:1;
+  padding:3px 5px;border:1px solid var(--line);border-radius:3px;
+  color:var(--muted);background:transparent;
+}
+/* ========== 布局 ========== */
+.page{display:grid;grid-template-columns:minmax(360px,42%) 1fr;height:100dvh;}
+/* 左侧画报 */
+.art{
+  position:relative;overflow:hidden;
+  background:#0A0908 url("images/bg.jpg") 64% center/cover no-repeat;
+  border-right:1px solid rgba(245,239,228,.12);
+  isolate:isolate;
+}
+.art::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(120% 90% at 12% 0%,rgba(255,107,69,.16),transparent 58%),
+    linear-gradient(180deg,rgba(10,9,8,.30) 0%,rgba(10,9,8,.42) 38%,rgba(10,9,8,.94) 100%);
+}
+.art::after{
+  content:"";position:absolute;inset:0;
+  background-image:url("data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='140'%20height='140'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.9'%20numOctaves='2'%20stitchTiles='stitch'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23n)'%20opacity='0.5'/%3E%3C/svg%3E");
+  opacity:.22;mix-blend-mode:overlay;pointer-events:none;
+}
+.art-top{position:absolute;top:clamp(26px,4.5vw,46px);left:clamp(24px,4vw,46px);z-index:2;}
+.brand{
+  display:inline-block;font-family:var(--font-display);font-style:italic;
+  font-weight:500;font-size:clamp(30px,3.4vw,44px);line-height:1;letter-spacing:-.02em;
+  color:#F5EFE4;
+}
+.brand .star{color:var(--accent);font-style:normal;margin-left:2px;font-size:.55em;vertical-align:.55em;}
+.brand-sub{
+  display:block;margin-top:10px;font-family:var(--font-mono);font-size:9px;
+  letter-spacing:.34em;color:rgba(245,239,228,.55);
+}
+.art-side{
+  position:absolute;right:16px;top:50%;transform:translateY(-50%);
+  writing-mode:vertical-rl;font-family:var(--font-mono);font-size:8px;
+  letter-spacing:.36em;color:rgba(245,239,228,.42);z-index:2;
+}
+.art-bottom{
+  position:absolute;left:clamp(24px,4vw,46px);right:clamp(24px,4vw,46px);bottom:clamp(26px,4vw,46px);z-index:2;
+}
+.greet{
+  font-family:var(--font-display);font-weight:600;
+  font-size:clamp(30px,3.6vw,48px);line-height:1.1;letter-spacing:-.01em;color:#F5EFE4;
+}
+.greet-note{
+  margin-top:10px;font-size:12px;letter-spacing:.02em;color:rgba(245,239,228,.62);
+  min-height:1.6em;
+}
+.clock{
+  display:flex;align-items:baseline;gap:12px;margin-top:26px;
+  padding-top:14px;border-top:1px solid rgba(245,239,228,.18);
+}
+.clock .time{
+  font-family:var(--font-mono);font-size:20px;letter-spacing:.04em;color:#F5EFE4;font-variant-numeric:tabular-nums;
+}
+.clock .sec{font-family:var(--font-mono);font-size:10px;color:rgba(245,239,228,.45);font-variant-numeric:tabular-nums;}
+.clock .date{
+  margin-left:auto;font-family:var(--font-mono);font-size:9px;
+  letter-spacing:.16em;color:rgba(245,239,228,.5);text-transform:uppercase;text-align:right;
+}
+/* 右侧索引 */
+.index{height:100dvh;overflow-y:auto;overflow-x:hidden;position:relative;}
+.index::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(70% 42% at 100% 0%,rgba(255,107,69,.06),transparent 70%);
+}
+.index-inner{position:relative;max-width:820px;margin:0 auto;padding:clamp(38px,5vw,72px) clamp(24px,5vw,72px) 44px;}
+.index-top{display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.kicker{
+  font-family:var(--font-mono);font-size:9px;letter-spacing:.24em;
+  color:var(--muted);text-transform:uppercase;
+}
+.kicker b{color:var(--accent);font-weight:500;}
+.theme-btn{
+  flex:none;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;
+  display:grid;place-items:center;transition:border-color .2s var(--ease),background .2s var(--ease),transform .2s var(--ease);
+}
+.theme-btn:hover{border-color:var(--accent);background:var(--hover);transform:rotate(8deg);}
+.theme-btn svg{width:15px;height:15px;stroke:var(--muted);fill:none;stroke-width:1.4;stroke-linecap:round;}
+.theme-btn:hover svg{stroke:var(--accent);}
+[data-theme="dark"] .icon-moon{display:none;}
+[data-theme="light"] .icon-sun{display:none;}
+/* 主视觉 */
+.hero{margin-top:clamp(40px,6vw,72px);}
+.hero h1{
+  font-family:var(--font-display);font-weight:500;
+  font-size:clamp(38px,5.2vw,64px);line-height:1.08;letter-spacing:-.025em;
+}
+.hero .star{color:var(--accent);font-size:.42em;vertical-align:.72em;margin-left:.12em;}
+.hero-sub{
+  margin-top:18px;max-width:34em;font-size:13.5px;line-height:1.8;color:var(--muted);
+}
+.hero-sub .hl{color:var(--text);border-bottom:1px solid var(--line-strong);}
+/* 搜索 */
+.search-wrap{
+  display:flex;align-items:center;gap:14px;margin-top:clamp(30px,4vw,46px);
+  padding-bottom:14px;border-bottom:1px solid var(--line-strong);
+  transition:border-color .25s var(--ease);
+}
+.search-wrap:focus-within{border-color:var(--accent);}
+.search-wrap > svg{width:18px;height:18px;flex:none;stroke:var(--muted);fill:none;stroke-width:1.5;stroke-linecap:round;transition:stroke .25s;}
+.search-wrap:focus-within > svg{stroke:var(--accent);}
+#q{
+  flex:1;min-width:0;background:none;border:0;outline:none;
+  font-family:var(--font-body);font-size:17px;letter-spacing:.01em;color:var(--text);
+  padding:6px 0;
+}
+#q::placeholder{color:var(--faint);}
+#q::-webkit-search-decoration,#q::-webkit-search-cancel-button{display:none;}
+.search-hint{display:flex;align-items:center;gap:5px;flex:none;}
+.clear-btn{
+  flex:none;width:24px;height:24px;display:none;place-items:center;
+  font-family:var(--font-mono);font-size:14px;color:var(--muted);
+}
+.clear-btn:hover{color:var(--accent);}
+.clear-btn[data-show]{display:grid;}
+.search-meta{
+  min-height:20px;margin-top:12px;font-family:var(--font-mono);font-size:10px;
+  letter-spacing:.08em;color:var(--muted);
+}
+/* 最近访问 */
+.recent{
+  margin-top:16px;padding-top:2px;
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+}
+.recent-label{
+  font-family:var(--font-mono);font-size:9px;letter-spacing:.2em;color:var(--faint);
+  display:flex;align-items:center;gap:7px;
+}
+.recent-label::before{
+  content:"";width:5px;height:5px;border-radius:50%;background:var(--accent-2);
+}
+.recent-list{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.recent-empty{font-size:11px;color:var(--faint);}
+.recent-chip{
+  display:inline-flex;align-items:center;gap:7px;padding:4px 11px 4px 4px;
+  border:1px solid var(--line);border-radius:999px;font-size:11.5px;color:var(--muted);
+  transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease);
+}
+.recent-chip:hover{border-color:var(--accent);color:var(--accent);background:var(--hover);}
+.recent-chip .mark-sm{
+  width:20px;height:20px;flex:none;border:0;border-radius:50%;
+  background:var(--line);font-family:var(--font-display);font-size:10px;
+  display:grid;place-items:center;color:var(--text);
+}
+/* 分类 */
+.cats{margin-top:clamp(34px,4.5vw,52px);}
+.cat{margin-top:clamp(34px,4vw,48px);}
+.cat-head{
+  display:grid;grid-template-columns:42px 1fr auto;align-items:end;gap:10px;
+  padding-bottom:12px;border-bottom:1px solid var(--line-strong);
+}
+.cat-num{
+  font-family:var(--font-mono);font-size:12px;color:var(--accent);letter-spacing:.06em;
+  align-self:start;padding-top:3px;
+}
+.cat-title h2{
+  font-family:var(--font-display);font-weight:600;font-size:clamp(21px,2.4vw,27px);
+  line-height:1.1;letter-spacing:0;
+}
+.cat-en{
+  display:block;margin-top:5px;font-family:var(--font-mono);font-size:8.5px;
+  letter-spacing:.24em;color:var(--faint);text-transform:uppercase;
+}
+.cat-count{
+  font-family:var(--font-mono);font-size:9px;color:var(--faint);padding-bottom:3px;
+}
+.sites{
+  display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(18px,3vw,34px);
+}
+.site{
+  display:grid;grid-template-columns:34px minmax(0,1fr) auto;align-items:center;gap:12px;
+  padding:13px 6px 13px 4px;border-bottom:1px solid var(--line);
+  transition:background .2s var(--ease),padding-left .2s var(--ease);
+  position:relative;
+}
+.site:hover{background:var(--hover);padding-left:10px;}
+.site .mark{
+  width:34px;height:34px;display:grid;place-items:center;flex:none;
+  border:1px solid var(--line);border-radius:3px;
+  font-family:var(--font-display);font-weight:500;font-size:15px;color:var(--muted);
+  transition:border-color .22s var(--ease),background .22s var(--ease),color .22s var(--ease);
+}
+.site:hover .mark{border-color:var(--accent);background:var(--accent);color:var(--bg);}
+.site-body{display:flex;flex-direction:column;min-width:0;gap:2px;}
+.site-name{
+  font-family:var(--font-display);font-weight:500;font-size:16px;line-height:1.3;
+  color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.site-host{
+  font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;color:var(--faint);
+  text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.arrow{
+  font-family:var(--font-mono);font-size:12px;color:var(--accent);
+  opacity:0;transform:translate(-4px,4px);transition:opacity .2s var(--ease),transform .2s var(--ease);
+}
+.site:hover .arrow,.site:focus-visible .arrow{opacity:1;transform:translate(0,0);}
+.site.is-hidden,.cat.is-hidden{display:none;}
+.no-result{
+  margin-top:26px;padding:26px 18px;border:1px dashed var(--line-strong);border-radius:4px;
+  font-size:12.5px;color:var(--muted);text-align:center;
+}
+/* 页脚 */
+.foot{
+  margin-top:clamp(48px,6vw,72px);padding-top:18px;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:10px 22px;justify-content:space-between;align-items:center;
+  font-family:var(--font-mono);font-size:9px;letter-spacing:.08em;color:var(--faint);
+}
+.foot .keys{display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.foot .keys span{display:inline-flex;align-items:center;gap:5px;}
+/* 颗粒 */
+.grain{
+  position:fixed;inset:0;z-index:100;pointer-events:none;opacity:var(--grain);
+  background-image:url("data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='160'%20height='160'%3E%3Cfilter%20id='g'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.8'%20numOctaves='2'%20stitchTiles='stitch'/%3E%3C/filter%3E%3Crect%20width='100%25'%20height='100%25'%20filter='url(%23g)'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;
+}
+/* 滚动条 */
+.index::-webkit-scrollbar{width:9px;}
+.index::-webkit-scrollbar-track{background:transparent;}
+.index::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:999px;}
+.index::-webkit-scrollbar-thumb:hover{background:var(--accent);}
+/* 入场动画 */
+@keyframes rise{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+.anim{animation:rise .9s var(--d,0s) both var(--ease);}
+/* 响应式 */
+@media (max-width:980px){
+  body{overflow:auto;}
+  .page{display:block;height:auto;}
+  .art{height:44vh;min-height:320px;border-right:0;border-bottom:1px solid rgba(245,239,228,.12);}
+  .art-side{display:none;}
+  .index{height:auto;overflow:visible;}
+  .index-inner{padding-top:34px;}
+  .sites{grid-template-columns:1fr;}
+  .site:last-child{border-bottom:0;}
+}
+@media (max-width:520px){
+  .kicker{font-size:8px;letter-spacing:.12em;white-space:nowrap;}
+  .clock{margin-top:18px;}
+  .clock .date{display:none;}
+  .greet{font-size:30px;}
+  .hero h1{font-size:36px;}
+  #q{font-size:16px;}
+  .search-hint{display:none;}
+  .cat-head{grid-template-columns:34px 1fr auto;}
+  .foot{flex-direction:column;align-items:flex-start;}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s!important;transition-duration:.001s!important;}
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <!-- 左：画报 / 品牌 / 时间 -->
+  <aside class="art" aria-label="封面">
+    <div class="art-top">
+      <a class="brand" href="/" aria-label="LYLs 首页">LYLs<span class="star">*</span></a>
+      <span class="brand-sub">PERSONAL INDEX</span>
+    </div>
+    <span class="art-side">EST. 2019 — LAUNCHPAD</span>
+    <div class="art-bottom">
+      <p class="greet" id="greet">晚上好</p>
+      <p class="greet-note" id="greetNote">今天辛苦了，挑一个去处。</p>
+      <div class="clock">
+        <span class="time" id="time">00:00</span>
+        <span class="sec" id="sec">00</span>
+        <span class="date" id="date">2026.10.29 · 周四</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- 右：索引 -->
+  <main class="index">
+    <div class="index-inner">
+
+      <div class="index-top anim" style="--d:.05s">
+        <p class="kicker">PRIVATE INDEX <b>·</b> VOL. 01 <b>·</b> <span id="total">20</span> ENTRIES</p>
+        <button class="theme-btn" id="themeBtn" type="button" aria-label="切换浅色主题" title="切换主题">
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.2 5.2l1.7 1.7M17.1 17.1l1.7 1.7M18.8 5.2l-1.7 1.7M6.9 17.1l-1.7 1.7"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+        </button>
+      </div>
+
+      <header class="hero anim" style="--d:.12s">
+        <h1>要去的地方，<br>都在这一页<span class="star">*</span></h1>
+        <p class="hero-sub">工作台、灵感、阅读与生活 —— 一次点击的距离。按 <kbd>/</kbd> 搜索，<kbd>Enter</kbd> 打开第一个结果。</p>
+      </header>
+
+      <div class="search-wrap anim" style="--d:.2s">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+        <input id="q" type="search" autocomplete="off" spellcheck="false" aria-label="搜索站点" placeholder="搜索站点、域名或拼音首字母" />
+        <span class="search-hint"><kbd>/</kbd></span>
+        <button class="clear-btn" id="clearBtn" type="button" aria-label="清除搜索">×</button>
+      </div>
+      <p class="search-meta" id="searchMeta" aria-live="polite"></p>
+
+      <div class="recent anim" style="--d:.26s">
+        <span class="recent-label">RECENT · 最近</span>
+        <div class="recent-list" id="recentList"></div>
+      </div>
+
+      <div class="cats">
+
+        <!-- 01 工作台 -->
+        <section class="cat anim" style="--d:.32s" aria-labelledby="cat-work">
+          <header class="cat-head">
+            <span class="cat-num">01</span>
+            <div class="cat-title"><h2 id="cat-work">工作台</h2><span class="cat-en">Workbench</span></div>
+            <span class="cat-count">04</span>
+          </header>
+          <div class="sites">
+            <a class="site" href="https://www.feishu.cn" target="_blank" rel="noopener" data-name="飞书" data-mark="飞" data-keywords="feishu lark fs 飞书">
+              <span class="mark">飞</span>
+              <span class="site-body"><span class="site-name">飞书</span><span class="site-host">feishu.cn</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://www.notion.so" target="_blank" rel="noopener" data-name="Notion" data-mark="N" data-keywords="notion nt 笔记">
+              <span class="mark">N</span>
+              <span class="site-body"><span class="site-name">Notion</span><span class="site-host">notion.so</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://www.yuque.com" target="_blank" rel="noopener" data-name="语雀" data-mark="语" data-keywords="yuque yq 语雀 文档">
+              <span class="mark">语</span>
+              <span class="site-body"><span class="site-name">语雀</span><span class="site-host">yuque.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://github.com" target="_blank" rel="noopener" data-name="GitHub" data-mark="G" data-keywords="github gh git 代码">
+              <span class="mark">G</span>
+              <span class="site-body"><span class="site-name">GitHub</span><span class="site-host">github.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- 02 智能 -->
+        <section class="cat anim" style="--d:.4s" aria-labelledby="cat-ai">
+          <header class="cat-head">
+            <span class="cat-num">02</span>
+            <div class="cat-title"><h2 id="cat-ai">智能</h2><span class="cat-en">Artificial Intelligence</span></div>
+            <span class="cat-count">05</span>
+          </header>
+          <div class="sites">
+            <a class="site" href="https://chatgpt.com" target="_blank" rel="noopener" data-name="ChatGPT" data-mark="C" data-keywords="chatgpt gpt chat openai ai">
+              <span class="mark">C</span>
+              <span class="site-body"><span class="site-name">ChatGPT</span><span class="site-host">chatgpt.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://claude.ai" target="_blank" rel="noopener" data-name="Claude" data-mark="C" data-keywords="claude anthropic ai">
+              <span class="mark">C</span>
+              <span class="site-body"><span class="site-name">Claude</span><span class="site-host">claude.ai</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://www.doubao.com" target="_blank" rel="noopener" data-name="豆包" data-mark="豆" data-keywords="doubao db 豆包 字节">
+              <span class="mark">豆</span>
+              <span class="site-body"><span class="site-name">豆包</span><span class="site-host">doubao.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://kimi.moonshot.cn" target="_blank" rel="noopener" data-name="Kimi" data-mark="K" data-keywords="kimi moonshot 月之暗面 ai">
+              <span class="mark">K</span>
+              <span class="site-body"><span class="site-name">Kimi</span><span class="site-host">kimi.moonshot.cn</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://jimeng.jianying.com" target="_blank" rel="noopener" data-name="即梦" data-mark="即" data-keywords="jimeng jianying 即梦 剪映 绘图">
+              <span class="mark">即</span>
+              <span class="site-body"><span class="site-name">即梦</span><span class="site-host">jimeng.jianying.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- 03 学习 -->
+        <section class="cat anim" style="--d:.48s" aria-labelledby="cat-study">
+          <header class="cat-head">
+            <span class="cat-num">03</span>
+            <div class="cat-title"><h2 id="cat-study">学习</h2><span class="cat-en">Study &amp; Reference</span></div>
+            <span class="cat-count">04</span>
+          </header>
+          <div class="sites">
+            <a class="site" href="https://www.zhihu.com" target="_blank" rel="noopener" data-name="知乎" data-mark="知" data-keywords="zhihu zh 知乎 问答">
+              <span class="mark">知</span>
+              <span class="site-body"><span class="site-name">知乎</span><span class="site-host">zhihu.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://www.bilibili.com" target="_blank" rel="noopener" data-name="哔哩哔哩" data-mark="B" data-keywords="bilibili bili b站 哔哩哔哩 视频">
+              <span class="mark">B</span>
+              <span class="site-body"><span class="site-name">哔哩哔哩</span><span class="site-host">bilibili.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://juejin.cn" target="_blank" rel="noopener" data-name="掘金" data-mark="掘" data-keywords="juejin jj 掘金 技术">
+              <span class="mark">掘</span>
+              <span class="site-body"><span class="site-name">掘金</span><span class="site-host">juejin.cn</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener" data-name="MDN" data-mark="M" data-keywords="mdn developer mozilla 文档 web">
+              <span class="mark">M</span>
+              <span class="site-body"><span class="site-name">MDN 文档</span><span class="site-host">developer.mozilla.org</span></span>
+              <span class="arrow">↗</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- 04 生活 -->
+        <section class="cat anim" style="--d:.56s" aria-labelledby="cat-life">
+          <header class="cat-head">
+            <span class="cat-num">04</span>
+            <div class="cat-title"><h2 id="cat-life">生活</h2><span class="cat-en">Daily Life</span></div>
+            <span class="cat-count">04</span>
+          </header>
+          <div class="sites">
+            <a class="site" href="https://music.163.com" target="_blank" rel="noopener" data-name="网易云音乐" data-mark="云" data-keywords="music netease 163 网易云 音乐">
+              <span class="mark">云</span>
+              <span class="site-body"><span class="site-name">网易云音乐</span><span class="site-host">music.163.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://www.douban.com" target="_blank" rel="noopener" data-name="豆瓣" data-mark="豆" data-keywords="douban db 豆瓣 电影 书">
+              <span class="mark">豆</span>
+              <span class="site-body"><span class="site-name">豆瓣</span><span class="site-host">douban.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://www.xiaohongshu.com" target="_blank" rel="noopener" data-name="小红书" data-mark="红" data-keywords="xiaohongshu xhs red 小红书">
+              <span class="mark">红</span>
+              <span class="site-body"><span class="site-name">小红书</span><span class="site-host">xiaohongshu.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://www.taobao.com" target="_blank" rel="noopener" data-name="淘宝" data-mark="淘" data-keywords="taobao tb 淘宝 购物">
+              <span class="mark">淘</span>
+              <span class="site-body"><span class="site-name">淘宝</span><span class="site-host">taobao.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- 05 我的 -->
+        <section class="cat anim" style="--d:.64s" aria-labelledby="cat-mine">
+          <header class="cat-head">
+            <span class="cat-num">05</span>
+            <div class="cat-title"><h2 id="cat-mine">我的</h2><span class="cat-en">Mine</span></div>
+            <span class="cat-count">03</span>
+          </header>
+          <div class="sites">
+            <a class="site" href="https://blog.myremote.gq" target="_blank" rel="noopener" data-name="博客" data-mark="博" data-keywords="blog 博客 文章">
+              <span class="mark">博</span>
+              <span class="site-body"><span class="site-name">博客</span><span class="site-host">blog.myremote.gq</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://github.com" target="_blank" rel="noopener" data-name="GitHub 主页" data-mark="G" data-keywords="github 主页 profile 代码">
+              <span class="mark">G</span>
+              <span class="site-body"><span class="site-name">GitHub 主页</span><span class="site-host">github.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://mail.qq.com" target="_blank" rel="noopener" data-name="邮箱" data-mark="邮" data-keywords="mail email 邮箱 邮件">
+              <span class="mark">邮</span>
+              <span class="site-body"><span class="site-name">邮箱</span><span class="site-host">mail.qq.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+          </div>
+        </section>
+
+      </div>
+
+      <div class="no-result" id="noResult" hidden>没有找到匹配的站点。试试 <kbd>gh</kbd>、<kbd>飞书</kbd> 或 <kbd>ai</kbd>。</div>
+
+      <footer class="foot anim" style="--d:.72s">
+        <div class="keys">
+          <span><kbd>/</kbd> 搜索</span>
+          <span><kbd>Enter</kbd> 打开首个</span>
+          <span><kbd>Esc</kbd> 清除</span>
+        </div>
+        <div>© 2019—2026 LYLs · 数据仅保存在本机，无统计、无追踪</div>
+      </footer>
+
+    </div>
+  </main>
+</div>
+
+<div class="grain" aria-hidden="true"></div>
+
+<script>
+(function(){
+  "use strict";
+  var $ = function(s, c){ return (c || document).querySelector(s); };
+  var $$ = function(s, c){ return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+
+  /* ---------- 时钟 / 问候 ---------- */
+  var greet = $('#greet'), greetNote = $('#greetNote'),
+      timeEl = $('#time'), secEl = $('#sec'), dateEl = $('#date');
+  var NOTES = [
+    ['夜深了','这个点还醒着，挑点轻松的看看。'],
+    ['早上好','新的一天，先做最重要的一件事。'],
+    ['上午好','专注时段，别让消息打断你。'],
+    ['中午好','午间歇一会儿，翻翻收藏。'],
+    ['下午好','来点灵感，或者换换脑子。'],
+    ['傍晚好','收尾时间，把今天的事落个地。'],
+    ['晚上好','今天辛苦了，去个喜欢的地方。']
+  ];
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+  function greetIndex(h){
+    if (h < 5) return 0;
+    if (h < 9) return 1;
+    if (h < 12) return 2;
+    if (h < 14) return 3;
+    if (h < 18) return 4;
+    if (h < 22) return 5;
+    return 6;
+  }
+  function tick(){
+    var now = new Date(), h = now.getHours(), m = now.getMinutes(), s = now.getSeconds();
+    var g = NOTES[greetIndex(h)];
+    greet.textContent = g[0];
+    greetNote.textContent = g[1];
+    timeEl.textContent = pad(h) + ':' + pad(m);
+    secEl.textContent = pad(s);
+    var days = ['周日','周一','周二','周三','周四','周五','周六'];
+    dateEl.textContent = now.getFullYear() + '.' + pad(now.getMonth() + 1) + '.' + pad(now.getDate()) + ' · ' + days[now.getDay()];
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  /* ---------- 主题 ---------- */
+  var root = document.documentElement, themeBtn = $('#themeBtn');
+  function syncThemeBtn(){
+    themeBtn.setAttribute('aria-label', root.dataset.theme === 'dark' ? '切换浅色主题' : '切换深色主题');
+  }
+  syncThemeBtn();
+  themeBtn.addEventListener('click', function(){
+    var next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    try { localStorage.setItem('lyls.theme', next); } catch(e){}
+    syncThemeBtn();
+  });
+
+  /* ---------- 统计与分类计数 ---------- */
+  var sites = $$('.site'), cats = $$('.cat'), totalEl = $('#total');
+  totalEl.textContent = String(sites.length).padStart(2, '0');
+  cats.forEach(function(cat){
+    var n = cat.querySelectorAll('.site').length;
+    cat.dataset.count = String(n).padStart(2, '0');
+    cat.querySelector('.cat-count').textContent = cat.dataset.count;
+  });
+
+  /* ---------- 搜索 ---------- */
+  var q = $('#q'), meta = $('#searchMeta'), clearBtn = $('#clearBtn'), noResult = $('#noResult');
+  function filter(){
+    var raw = q.value.trim(), query = raw.toLowerCase();
+    var visible = 0;
+    sites.forEach(function(a){
+      var hay = (a.dataset.keywords + ' ' + a.dataset.name + ' ' + a.textContent).toLowerCase();
+      var hit = !query || hay.indexOf(query) !== -1;
+      a.classList.toggle('is-hidden', !hit);
+      if (hit) visible++;
+    });
+    cats.forEach(function(cat){
+      var shown = cat.querySelectorAll('.site:not(.is-hidden)').length;
+      cat.classList.toggle('is-hidden', shown === 0);
+      cat.querySelector('.cat-count').textContent = query ? String(shown).padStart(2, '0') : cat.dataset.count;
+    });
+    noResult.hidden = !(query && visible === 0);
+    if (!query) {
+      meta.textContent = '';
+    } else {
+      meta.textContent = visible
+        ? '匹配 ' + visible + ' 个站点 · 按 Enter 打开第一个'
+        : '匹配 0 个站点';
+    }
+    if (raw) { clearBtn.setAttribute('data-show', ''); } else { clearBtn.removeAttribute('data-show'); }
+  }
+  q.addEventListener('input', filter);
+  clearBtn.addEventListener('click', function(){ q.value = ''; filter(); q.focus(); });
+  q.addEventListener('keydown', function(e){
+    if (e.key === 'Enter') {
+      var first = $('.site:not(.is-hidden)');
+      if (first) { first.click(); }
+    }
+  });
+  document.addEventListener('keydown', function(e){
+    var typing = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName);
+    if ((e.key === 'k' || e.key === 'K') && (e.metaKey || e.ctrlKey)) {
+      e.preventDefault(); q.focus(); q.select();
+    } else if (e.key === '/' && !typing) {
+      e.preventDefault(); q.focus();
+    } else if (e.key === 'Escape') {
+      if (q.value) { q.value = ''; filter(); }
+      q.blur();
+    }
+  });
+
+  /* ---------- 最近访问 ---------- */
+  var RECENT_KEY = 'lyls.recent.v1';
+  var listEl = $('#recentList');
+  function readRecent(){
+    try { return JSON.parse(localStorage.getItem(RECENT_KEY)) || []; } catch(e){ return []; }
+  }
+  function writeRecent(arr){
+    try { localStorage.setItem(RECENT_KEY, JSON.stringify(arr)); } catch(e){}
+  }
+  function renderRecent(){
+    var arr = readRecent();
+    if (!arr.length) {
+      listEl.innerHTML = '<span class="recent-empty">点击任意站点，这里会记住你最近去的地方</span>';
+      return;
+    }
+    listEl.innerHTML = arr.map(function(item){
+      return '<a class="recent-chip" href="' + item.url + '" target="_blank" rel="noopener">' +
+        '<span class="mark-sm">' + item.mark + '</span>' + item.name + '</a>';
+    }).join('');
+  }
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a.site') : null;
+    if (!a) return;
+    var item = { name: a.dataset.name, mark: a.dataset.mark, url: a.href };
+    var arr = readRecent().filter(function(x){ return x.url !== item.url; });
+    arr.unshift(item);
+    writeRecent(arr.slice(0, 5));
+    renderRecent();
+  });
+  renderRecent();
+})();
+</script>
+</body>
+</html>
