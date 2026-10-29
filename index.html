@@ -1,64 +1,246 @@
-<!DOCTYPE HTML>
-<html>
-	<head>
-		<title>LYLs</title>
-		<meta name="keywords" content="666">
-        <meta name="description" content="666">
-        <link rel="shortcut icon" href="favicon.ico.css" tppabs="./favicon.ico">
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" tppabs="/assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" tppabs="/assets/css/noscript.css" /></noscript>
-	</head>
-	<body onselectstart="return false" oncontextmenu=self.event.returnValue=false> 
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>LYLs · 私人索引</title>
+<meta name="description" content="LYLs 的个人导航页：工作、AI、学习、生活与我的一页入口。" />
+<meta name="theme-color" content="#0C0B0A" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20fill='%230C0B0A'/%3E%3Ctext%20x='32'%20y='45'%20font-family='Georgia,serif'%20font-size='40'%20fill='%23FF6B45'%20text-anchor='middle'%3EL%3C/text%3E%3C/svg%3E" />
+<script>try{var t=localStorage.getItem('lyls.theme');if(t==='light'||t==='dark'){document.documentElement.dataset.theme=t;}}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+SC:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/nav.css" />
+  <link rel="preload" as="image" href="images/bg-fresh.webp" fetchpriority="high" />
+</head>
+<body>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+<div class="page">
+  <!-- 左：画报 / 品牌 / 时间 -->
+  <aside class="art" aria-label="封面">
+    <div class="art-top">
+      <a class="brand" href="/" aria-label="LYLs 首页">LYLs<span class="star">*</span></a>
+      <span class="brand-sub">PERSONAL INDEX</span>
+    </div>
+    <span class="art-side">EST. 2019 — LAUNCHPAD</span>
+    <div class="art-bottom">
+      <p class="greet" id="greet">晚上好</p>
+      <p class="greet-note" id="greetNote">今天辛苦了，挑一个去处。</p>
+      <div class="clock">
+        <span class="time" id="time">00:00</span>
+        <span class="sec" id="sec">00</span>
+        <span class="date" id="date">2026.10.29 · 周四</span>
+      </div>
+    </div>
+  </aside>
 
-				<!-- Header -->
-					<header id="header">
-						<div class="logo">
+  <!-- 右：索引 -->
+  <main class="index">
+    <div class="index-inner">
 
-							<span class="icon fa-diamond"><font size="8">LYLs</font></span>						</div>
-						<div class="content">
-							<div class="inner">
-								<h1>LYLs</h1>
-								<p>myremote.gq</p>
-							</div>
-						</div>
-						<nav>
-							<ul>
-								<li><a href="https://blog.myremote.gq" target="_blank">博客</a></li>
-								<li><a href="/" target="_blank">等待添加</a></li>
+      <div class="index-top anim" style="--d:.05s">
+        <p class="kicker">PRIVATE INDEX <b>·</b> VOL. 01 <b>·</b> <span id="total">20</span> ENTRIES</p>
+        <button class="theme-btn" id="themeBtn" type="button" aria-label="切换浅色主题" title="切换主题">
+          <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M5.2 5.2l1.7 1.7M17.1 17.1l1.7 1.7M18.8 5.2l-1.7 1.7M6.9 17.1l-1.7 1.7"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z"/></svg>
+        </button>
+      </div>
 
-								<li><a href="/"target="_blank">等待添加</a></li>
-								<li><a href="/" target="_blank">等待添加</a></li>
-								<li><a href="/" target="_blank">等待添加</a></li>
-								<li><a href="/"target="_blank">等待添加</a></li>
-								
-								<!--<li><a href="#elements">Elements</a></li>-->
-							</ul>
-						</nav>
-					</header>
+      <header class="hero anim" style="--d:.12s">
+        <h1>要去的地方，<br>都在这一页<span class="star">*</span></h1>
+        <p class="hero-sub">工作台、灵感、阅读与生活 —— 一次点击的距离。按 <kbd>/</kbd> 搜索，<kbd>Enter</kbd> 打开第一个结果。</p>
+      </header>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<p class="copyright">©2019 <a href="/" target="_blank">LYLs</a> 版权所有</p><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1277833447'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s23.cnzz.com/z_stat.php%3Fid%3D1277833447%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script>
+      <div class="search-wrap anim" style="--d:.2s">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg>
+        <input id="q" type="search" autocomplete="off" spellcheck="false" aria-label="搜索站点" placeholder="搜索站点、域名或拼音首字母" />
+        <span class="search-hint"><kbd>/</kbd></span>
+        <button class="clear-btn" id="clearBtn" type="button" aria-label="清除搜索">×</button>
+      </div>
+      <p class="search-meta" id="searchMeta" aria-live="polite"></p>
 
-					</footer>
+      <div class="recent anim" style="--d:.26s">
+        <span class="recent-label">RECENT · 最近</span>
+        <div class="recent-list" id="recentList"></div>
+      </div>
 
-			</div>
+      <div class="cats">
 
-		<!-- BG -->
-			<div id="bg"></div>
+        <!-- 01 工作台 -->
+        <section class="cat anim" style="--d:.32s" aria-labelledby="cat-work">
+          <header class="cat-head">
+            <span class="cat-num">01</span>
+            <div class="cat-title"><h2 id="cat-work">工作台</h2><span class="cat-en">Workbench</span></div>
+            <span class="cat-count">04</span>
+          </header>
+          <div class="sites">
+            <a class="site" href="https://www.feishu.cn" target="_blank" rel="noopener" data-name="飞书" data-mark="飞" data-keywords="feishu lark fs 飞书">
+              <span class="mark">飞</span>
+              <span class="site-body"><span class="site-name">飞书</span><span class="site-host">feishu.cn</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://www.notion.so" target="_blank" rel="noopener" data-name="Notion" data-mark="N" data-keywords="notion nt 笔记">
+              <span class="mark">N</span>
+              <span class="site-body"><span class="site-name">Notion</span><span class="site-host">notion.so</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://www.yuque.com" target="_blank" rel="noopener" data-name="语雀" data-mark="语" data-keywords="yuque yq 语雀 文档">
+              <span class="mark">语</span>
+              <span class="site-body"><span class="site-name">语雀</span><span class="site-host">yuque.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://github.com" target="_blank" rel="noopener" data-name="GitHub" data-mark="G" data-keywords="github gh git 代码">
+              <span class="mark">G</span>
+              <span class="site-body"><span class="site-name">GitHub</span><span class="site-host">github.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+          </div>
+        </section>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js" ></script>
-			<script src="assets/js/skel.min.js" ></script>
-			<script src="assets/js/util.js" ></script>
-			<script src="assets/js/main.js" ></script>
- 
-<iframe src="http://music.163.com/outchain/player?type=2&id=512733081&auto=1&height=66" frameborder="0" width="0" scrolling="no" height="0" target="_blank"></iframe>
-<div style="position: static; display: none; width: 0px; height: 0px; border: none; padding: 0px; margin: 0px;"><div id="trans-tooltip"><div id="tip-left-top" style="background: url("chrome-extension://ikkbfngojljohpekonpldkamedehakni/imgs/map/tip-left-top.png");"></div><div id="tip-top" style="background: url("chrome-extension://ikkbfngojljohpekonpldkamedehakni/imgs/map/tip-top.png") repeat-x;"></div><div id="tip-right-top" style="background: url("chrome-extension://ikkbfngojljohpekonpldkamedehakni/imgs/map/tip-right-top.png");"></div><div id="tip-right" style="background: url("chrome-extension://ikkbfngojljohpekonpldkamedehakni/imgs/map/tip-right.png") repeat-y;"></div><div id="tip-right-bottom" style="background: url("chrome-extension://ikkbfngojljohpekonpldkamedehakni/imgs/map/tip-right-bottom.png");"></div><div id="tip-bottom" style="background: url("chrome-extension://ikkbfngojljohpekonpldkamedehakni/imgs/map/tip-bottom.png") repeat-x;"></div><div id="tip-left-bottom" style="background: url("chrome-extension://ikkbfngojljohpekonpldkamedehakni/imgs/map/tip-left-bottom.png");"></div><div id="tip-left" style="background: url("chrome-extension://ikkbfngojljohpekonpldkamedehakni/imgs/map/tip-left.png");"></div><div id="trans-content"></div></div><div id="tip-arrow-bottom" style="background: url("chrome-extension://ikkbfngojljohpekonpldkamedehakni/imgs/map/tip-arrow-bottom.png");"></div><div id="tip-arrow-top" style="background: url("chrome-extension://ikkbfngojljohpekonpldkamedehakni/imgs/map/tip-arrow-top.png");"></div></div>
-	</body>
+        <!-- 02 智能 -->
+        <section class="cat anim" style="--d:.4s" aria-labelledby="cat-ai">
+          <header class="cat-head">
+            <span class="cat-num">02</span>
+            <div class="cat-title"><h2 id="cat-ai">智能</h2><span class="cat-en">Artificial Intelligence</span></div>
+            <span class="cat-count">05</span>
+          </header>
+          <div class="sites">
+            <a class="site" href="https://chatgpt.com" target="_blank" rel="noopener" data-name="ChatGPT" data-mark="C" data-keywords="chatgpt gpt chat openai ai">
+              <span class="mark">C</span>
+              <span class="site-body"><span class="site-name">ChatGPT</span><span class="site-host">chatgpt.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://claude.ai" target="_blank" rel="noopener" data-name="Claude" data-mark="C" data-keywords="claude anthropic ai">
+              <span class="mark">C</span>
+              <span class="site-body"><span class="site-name">Claude</span><span class="site-host">claude.ai</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://www.doubao.com" target="_blank" rel="noopener" data-name="豆包" data-mark="豆" data-keywords="doubao db 豆包 字节">
+              <span class="mark">豆</span>
+              <span class="site-body"><span class="site-name">豆包</span><span class="site-host">doubao.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://kimi.moonshot.cn" target="_blank" rel="noopener" data-name="Kimi" data-mark="K" data-keywords="kimi moonshot 月之暗面 ai">
+              <span class="mark">K</span>
+              <span class="site-body"><span class="site-name">Kimi</span><span class="site-host">kimi.moonshot.cn</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://jimeng.jianying.com" target="_blank" rel="noopener" data-name="即梦" data-mark="即" data-keywords="jimeng jianying 即梦 剪映 绘图">
+              <span class="mark">即</span>
+              <span class="site-body"><span class="site-name">即梦</span><span class="site-host">jimeng.jianying.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- 03 学习 -->
+        <section class="cat anim" style="--d:.48s" aria-labelledby="cat-study">
+          <header class="cat-head">
+            <span class="cat-num">03</span>
+            <div class="cat-title"><h2 id="cat-study">学习</h2><span class="cat-en">Study &amp; Reference</span></div>
+            <span class="cat-count">04</span>
+          </header>
+          <div class="sites">
+            <a class="site" href="https://www.zhihu.com" target="_blank" rel="noopener" data-name="知乎" data-mark="知" data-keywords="zhihu zh 知乎 问答">
+              <span class="mark">知</span>
+              <span class="site-body"><span class="site-name">知乎</span><span class="site-host">zhihu.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://www.bilibili.com" target="_blank" rel="noopener" data-name="哔哩哔哩" data-mark="B" data-keywords="bilibili bili b站 哔哩哔哩 视频">
+              <span class="mark">B</span>
+              <span class="site-body"><span class="site-name">哔哩哔哩</span><span class="site-host">bilibili.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://juejin.cn" target="_blank" rel="noopener" data-name="掘金" data-mark="掘" data-keywords="juejin jj 掘金 技术">
+              <span class="mark">掘</span>
+              <span class="site-body"><span class="site-name">掘金</span><span class="site-host">juejin.cn</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://developer.mozilla.org/zh-CN/" target="_blank" rel="noopener" data-name="MDN" data-mark="M" data-keywords="mdn developer mozilla 文档 web">
+              <span class="mark">M</span>
+              <span class="site-body"><span class="site-name">MDN 文档</span><span class="site-host">developer.mozilla.org</span></span>
+              <span class="arrow">↗</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- 04 生活 -->
+        <section class="cat anim" style="--d:.56s" aria-labelledby="cat-life">
+          <header class="cat-head">
+            <span class="cat-num">04</span>
+            <div class="cat-title"><h2 id="cat-life">生活</h2><span class="cat-en">Daily Life</span></div>
+            <span class="cat-count">04</span>
+          </header>
+          <div class="sites">
+            <a class="site" href="https://music.163.com" target="_blank" rel="noopener" data-name="网易云音乐" data-mark="云" data-keywords="music netease 163 网易云 音乐">
+              <span class="mark">云</span>
+              <span class="site-body"><span class="site-name">网易云音乐</span><span class="site-host">music.163.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://www.douban.com" target="_blank" rel="noopener" data-name="豆瓣" data-mark="豆" data-keywords="douban db 豆瓣 电影 书">
+              <span class="mark">豆</span>
+              <span class="site-body"><span class="site-name">豆瓣</span><span class="site-host">douban.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://www.xiaohongshu.com" target="_blank" rel="noopener" data-name="小红书" data-mark="红" data-keywords="xiaohongshu xhs red 小红书">
+              <span class="mark">红</span>
+              <span class="site-body"><span class="site-name">小红书</span><span class="site-host">xiaohongshu.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://www.taobao.com" target="_blank" rel="noopener" data-name="淘宝" data-mark="淘" data-keywords="taobao tb 淘宝 购物">
+              <span class="mark">淘</span>
+              <span class="site-body"><span class="site-name">淘宝</span><span class="site-host">taobao.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- 05 我的 -->
+        <section class="cat anim" style="--d:.64s" aria-labelledby="cat-mine">
+          <header class="cat-head">
+            <span class="cat-num">05</span>
+            <div class="cat-title"><h2 id="cat-mine">我的</h2><span class="cat-en">Mine</span></div>
+            <span class="cat-count">03</span>
+          </header>
+          <div class="sites">
+            <a class="site" href="https://blog.myremote.gq" target="_blank" rel="noopener" data-name="博客" data-mark="博" data-keywords="blog 博客 文章">
+              <span class="mark">博</span>
+              <span class="site-body"><span class="site-name">博客</span><span class="site-host">blog.myremote.gq</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://github.com" target="_blank" rel="noopener" data-name="GitHub 主页" data-mark="G" data-keywords="github 主页 profile 代码">
+              <span class="mark">G</span>
+              <span class="site-body"><span class="site-name">GitHub 主页</span><span class="site-host">github.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+            <a class="site" href="https://mail.qq.com" target="_blank" rel="noopener" data-name="邮箱" data-mark="邮" data-keywords="mail email 邮箱 邮件">
+              <span class="mark">邮</span>
+              <span class="site-body"><span class="site-name">邮箱</span><span class="site-host">mail.qq.com</span></span>
+              <span class="arrow">↗</span>
+            </a>
+          </div>
+        </section>
+
+      </div>
+
+      <div class="no-result" id="noResult" hidden>没有找到匹配的站点。试试 <kbd>gh</kbd>、<kbd>飞书</kbd> 或 <kbd>ai</kbd>。</div>
+
+      <footer class="foot anim" style="--d:.72s">
+        <div class="keys">
+          <span><kbd>/</kbd> 搜索</span>
+          <span><kbd>Enter</kbd> 打开首个</span>
+          <span><kbd>Esc</kbd> 清除</span>
+        </div>
+        <div>© 2019—2026 LYLs · 数据仅保存在本机，无统计、无追踪</div>
+      </footer>
+
+    </div>
+  </main>
+</div>
+
+<div class="grain" aria-hidden="true"></div>
+
+<script src="assets/js/nav.js"></script>
+</body>
 </html>
